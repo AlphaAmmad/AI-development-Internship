@@ -23,6 +23,74 @@ The AI Analytics Dashboard is a full-stack web application that combines multipl
 <img width="1846" height="960" alt="image" src="https://github.com/user-attachments/assets/802b58f0-e682-401c-a7aa-b9a51c6ca667" />
 
 
+## 📊 Data Requirements & Input Guidelines
+
+### 🔮 Customer Churn Prediction
+
+**Required Input Fields:**
+- `customer_tenure`: Customer tenure in months (1-120)
+- `number_of_services_or_products`: Number of services (1-8)
+- `average_monthly_usage`: Monthly usage amount (50.0-500.0)
+- `days_since_last_interaction`: Days since last interaction (0-365)
+- `complaints_resolved_ratio`: Complaint resolution ratio (0.0-1.0)
+- `total_spent`: Total amount spent (100-10000)
+- `average_transaction_value`: Average transaction value (100-2000)
+- `discount_or_offer_received`: Discount received (0=No, 1=Yes)
+- `account_status`: Account status (Active, Inactive, Suspended, Closed)
+
+**Example Input:**
+```json
+{
+  "customer_tenure": 46,
+  "number_of_services_or_products": 1,
+  "average_monthly_usage": 156.21,
+  "days_since_last_interaction": 192,
+  "complaints_resolved_ratio": 0.84,
+  "total_spent": 8691.93,
+  "average_transaction_value": 869.19,
+  "discount_or_offer_received": 1,
+  "account_status": "Closed"
+}
+```
+
+**If using your own CSV for churn prediction, it must contain these columns:**
+```csv
+name,customer_id,customer_tenure,number_of_services_or_products,average_monthly_usage,last_interaction_date,days_since_last_interaction,number_of_complaints,complaints_resolved_ratio,total_spent,average_transaction_value,outstanding_balance,payment_frequency,discount_or_offer_received,customer_support_calls,account_status,churn_flag
+```
+
+### 🛍️ Product Recommendations
+
+**Required Input Fields:**
+- `region`: Customer region (India, Pakistan, UAE)
+- `gender`: Customer gender (Male, Female)
+- `user_age_group`: Age group (18-25, 25-30, 30-40, 40+)
+- `user_preferences`: Style preference (office wear, sports wear, daily wear, party wear)
+- `season`: Current season (Spring, Summer, Autumn, Winter)
+- `product_keywords`: Product interests (comma-separated: shoes, shirts, jeans, etc.)
+- `previous_buy`: Last purchased item
+
+**If using your own CSV for recommendations, it must contain these columns:**
+```csv
+user_id,region,gender,user_age_group,user_preferences,season,product_keywords,previous_buy,suggested_brand,suggested_product
+```
+
+### 📈 Sales Forecasting
+
+**CSV Requirements:**
+- Must contain date column and sales/value column
+- Date format: YYYY-MM-DD or MM/DD/YYYY
+- Minimum 30 data points recommended
+- No missing values in key columns
+
+**Example CSV structure:**
+```csv
+date,sales
+2024-01-01,1500.50
+2024-01-02,1750.25
+2024-01-03,1200.75
+```
+
+
 ### Tech Stack
 - **Backend**: Flask (Python) with CORS support
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
